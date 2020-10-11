@@ -1,4 +1,4 @@
-import { call, takeLatest } from "@redux-saga/core/effects";
+import { call, takeLatest,put } from "@redux-saga/core/effects";
 import axios from "axios";
 import entryTypes from '../actions/entries.action';
 
@@ -7,9 +7,9 @@ export default function* addEntrySaga() {
 }
 
 function* addEntryToDB({ payload }) {
-    console.log('add entry', payload);
     yield call(addEntry, payload);
     yield call(addEntryDetails, payload);
+    yield put({type: entryTypes.ADD_ENTRY_RESULT, payload})
 }
 
 async function addEntry({ id, description }) {
