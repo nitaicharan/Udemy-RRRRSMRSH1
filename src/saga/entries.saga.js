@@ -4,14 +4,13 @@ import entriesTypes from "../actions/entries.action";
 
 export function* getAllEntries() {
     yield take(entriesTypes.GET_ENTRIES);
-    console.log('I need to get the entries now');
     const result = yield call(axios, 'http://localhost:3001/entries');
     yield put({ type: entriesTypes.POPULATE_ENTRIES, payload: result.data });
 }
 
 export function* getEntryDetails(id) {
     const { data } = yield call(axios, `http://localhost:3001/values/${id}`);
-    console.log(data);
+    yield put({ type: entriesTypes.POPULATE_ENTRY_DETAIL, payload: { id, entry: data } });
 }
 
 export function* getAllEntriesDetails(params) {
