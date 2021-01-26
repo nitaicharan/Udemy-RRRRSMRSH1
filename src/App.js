@@ -8,6 +8,7 @@ import EntryLines from './components/EntryLines';
 import MainHeader from './components/MainHeader';
 import ModelEdit from './components/ModelEdit';
 import NewEntryForm from './components/NewEntryForm';
+import axios from 'axios'
 
 function App() {
   const [total, setTotal] = useState(0);
@@ -28,6 +29,15 @@ function App() {
     const index = entries.findIndex(entry => entry.id === id);
     setEntry(entries[index]);
   }, [isOpen, id, entries]);
+
+  async function fetchInitialData(){
+    const result = await axios.get('http://localhost:3001/entries')
+    console.log(result);
+  }
+  
+  useEffect(()=> {
+    fetchInitialData();
+  },[])
 
   return (
     <Container>
