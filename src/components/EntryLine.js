@@ -6,7 +6,6 @@ import { openEditModal } from './../actions/modals.action';
 
 function EntryLine({ id, description, value, isExpense = false }) {
     const dispatch = useDispatch();
-    dispatch({ typeof: 'TEXT_MESSAGE' })
 
     return (
         <Fragment>
