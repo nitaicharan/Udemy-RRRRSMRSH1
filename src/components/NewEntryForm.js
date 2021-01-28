@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form } from 'semantic-ui-react';
-import userEntryDetails, { } from "../hooks/userEntryDetails";
+import UserEntryDetails from "../hooks/UseEntryDetails";
 import ButtonSaveOrCancel from './ButtonSaveOrCancel';
 import EntryForm from './EntryForm';
 
@@ -13,7 +13,7 @@ function NewEntryForm() {
     isExpense,
     setIsExpense,
     addEntry,
-  } = userEntryDetails();
+  } = UserEntryDetails();
 
   return (
     <Form unstackable>
