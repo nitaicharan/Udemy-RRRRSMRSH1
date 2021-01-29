@@ -25,6 +25,7 @@ const UseEntryDetails = (description = '', value = '', isExpense = true) => {
         }));
 
         dispatch(closeEditModal());
+        resetValues();
     }
 
     const addEntry = (params) => {
@@ -36,6 +37,10 @@ const UseEntryDetails = (description = '', value = '', isExpense = true) => {
             isExpense: i
         }));
 
+        resetValues();
+    }
+
+    const resetValues = () => {
         setD('');
         setV('');
         setI(true);
