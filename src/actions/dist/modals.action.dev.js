@@ -18,7 +18,7 @@ exports.openEditModal = openEditModal;
 
 var closeEditModal = function closeEditModal() {
   return {
-    typpe: 'CLOSE_EDIT_MODAL'
+    type: 'CLOSE_EDIT_MODAL'
   };
 };
 

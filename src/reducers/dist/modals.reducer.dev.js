@@ -25,6 +25,11 @@ var reducer = function reducer() {
       });
 
     case 'CLOSE_EDIT_MODAL':
+      return _objectSpread({}, state, {
+        isOpen: false,
+        id: null
+      });
+
     default:
       return state;
   }
