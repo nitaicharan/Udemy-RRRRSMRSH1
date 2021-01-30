@@ -4,7 +4,7 @@ import { Button, Modal } from 'semantic-ui-react';
 import { closeEditModal } from '../actions/modals.action';
 import EntryForm from './EntryForm';
 
-function ModelEdit({ isOpen, setIsOpen, description, value, isExpense, setValue, setDescription, setIsExpense }) {
+function ModelEdit({ isOpen, description, value, isExpense, setValue, setDescription, setIsExpense }) {
     const dispatch = useDispatch();
 
     return (
@@ -15,7 +15,7 @@ function ModelEdit({ isOpen, setIsOpen, description, value, isExpense, setValue,
             </Modal.Content>
             <Modal.Actions>
                 <Button onClick={() => dispatch(closeEditModal())}>Close</Button>
-                <Button onClick={() => setIsOpen(false)} primary>Ok</Button>
+                <Button onClick={() => dispatch(closeEditModal())} primary>Ok</Button>
             </Modal.Actions>
         </Modal>
     )

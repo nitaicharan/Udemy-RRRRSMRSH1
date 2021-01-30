@@ -4,7 +4,7 @@ import { Grid, Icon, Segment } from 'semantic-ui-react';
 import { removeEntryRedux } from './../actions/entries.action';
 import { openEditModal } from './../actions/modals.action';
 
-function EntryLine({ id, description, value, isExpense = false, editEntry }) {
+function EntryLine({ id, description, value, isExpense = false }) {
     const dispatch = useDispatch();
 
     return (

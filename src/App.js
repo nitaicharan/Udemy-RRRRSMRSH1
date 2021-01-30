@@ -10,17 +10,13 @@ import ModelEdit from './components/ModelEdit';
 import NewEntryForm from './components/NewEntryForm';
 
 function App() {
-  const [value, setValue] = useState('');
-  const [description, setDescription] = useState('');
-  const [isExpense, setIsExpense] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [entryId, setentryId] = useState();
   const [total, setTotal] = useState(0);
+  const [entry, setEntry] = useState();
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
 
   const entries = useSelector(state => state.entries)
-  const isOpenRedux = useSelector(state => state.modals.isOpen);
+  const { isOpen, id } = useSelector(state => state.modals);
 
   useEffect(() => {
     setIncomeTotal(entries.reduce((previous, current) => current.isExpense ? previous : previous + Number(current.value), 0));
@@ -29,40 +25,9 @@ function App() {
   }, [entries])
 
   useEffect(() => {
-    if (!isOpen && entryId) {
-      const index = entries.findIndex(entry => entry.id === entryId);
-      const newEntries = [...entries];
-      newEntries[index] = { description, value, isExpense, id: entryId };
-      // setEntries(newEntries);
-      reSetEntry();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
-
-
-  const addEntry = () => {
-    const newEntries = entries.concat({ description, value, id: entries.length + 1, isExpense });
-    // setEntries(newEntries);
-    reSetEntry();
-  }
-
-  const editEntry = (id) => {
-    if (id) {
-      const index = entries.findIndex(entry => entry.id === id);
-      const entry = entries[index];
-      setentryId(id);
-      setDescription(entry.description);
-      setValue(entry.value);
-      setIsExpense(entry.isExpense);
-      setIsOpen(true);
-    }
-  }
-
-  const reSetEntry = () => {
-    setDescription('');
-    setValue('');
-    setIsExpense(true);
-  }
+    const index = entries.findIndex(entry => entry.id === id);
+    setEntry(entries[index]);
+  }, [isOpen, id]);
 
   return (
     <Container>
@@ -74,13 +39,13 @@ function App() {
 
       <MainHeader title='History' type='h3' />
 
-      <EntryLines entries={entries} editEntry={editEntry} />
+      <EntryLines entries={entries} />
 
       <MainHeader title='Add new transaction' type='h3' />
 
-      <NewEntryForm addEntry={addEntry} description={description} isExpense={isExpense} value={value} setValue={setValue} setDescription={setDescription} setIsExpense={setIsExpense} />
+      <NewEntryForm />
 
-      <ModelEdit isOpen={isOpenRedux} setIsOpen={setIsOpen} description={description} isExpense={isExpense} value={value} setValue={setValue} setDescription={setDescription} setIsExpense={setIsExpense} />
+      <ModelEdit isOpen={isOpen} {...entry} />
 
     </Container>
   );
