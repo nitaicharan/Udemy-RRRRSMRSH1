@@ -17,7 +17,7 @@ var reducer = function reducer() {
   };
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
-  switch (key) {
+  switch (action.type) {
     case 'OPEN_EDIT_MODAL':
       return _objectSpread({}, state, {
         isOpen: true,

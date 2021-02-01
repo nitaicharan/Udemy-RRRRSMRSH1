@@ -18,7 +18,9 @@ function App() {
   const [total, setTotal] = useState(0);
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
+
   const entries = useSelector(state => state.entries)
+  const isOpenRedux = useSelector(state => state.modals.isOpen);
 
   useEffect(() => {
     setIncomeTotal(entries.reduce((previous, current) => current.isExpense ? previous : previous + Number(current.value), 0));
@@ -78,7 +80,7 @@ function App() {
 
       <NewEntryForm addEntry={addEntry} description={description} isExpense={isExpense} value={value} setValue={setValue} setDescription={setDescription} setIsExpense={setIsExpense} />
 
-      <ModelEdit isOpen={isOpen} setIsOpen={setIsOpen} description={description} isExpense={isExpense} value={value} setValue={setValue} setDescription={setDescription} setIsExpense={setIsExpense} />
+      <ModelEdit isOpen={isOpenRedux} setIsOpen={setIsOpen} description={description} isExpense={isExpense} value={value} setValue={setValue} setDescription={setDescription} setIsExpense={setIsExpense} />
 
     </Container>
   );
