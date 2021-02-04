@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import { Container } from 'semantic-ui-react';
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
@@ -37,7 +37,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
 
-  const store = createStore((state = initialState, action) => {
+  const entriesReducer = (state = initialState, action) => {
     switch (action.type) {
       case 'ADD_ENTRY':
         return state.concat(action.payload);
@@ -46,8 +46,14 @@ function App() {
       default:
         return state;
     }
+  };
+  
+  const reducers = combineReducers({
+    entries: entriesReducer,
   });
-
+  
+  const store = createStore(reducers);
+  
   const payload_add = {
     id: initialState.length + 1,
     description: 'Hello from Redux',
