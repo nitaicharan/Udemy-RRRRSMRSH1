@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { combineReducers, createStore } from 'redux';
 import { Container } from 'semantic-ui-react';
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
@@ -35,38 +34,7 @@ function App() {
       reSetEntry();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen])
-
-  const entriesReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case 'ADD_ENTRY':
-        return state.concat(action.payload);
-      case 'REMOVE_ENTRY':
-        return state.filter(entry => entry.id !== action.payload.id);
-      default:
-        return state;
-    }
-  };
-  
-  const reducers = combineReducers({
-    entries: entriesReducer,
-  });
-  
-  const store = createStore(reducers);
-  
-  const payload_add = {
-    id: initialState.length + 1,
-    description: 'Hello from Redux',
-    value: 999,
-    isExpense: false
-  };
-
-  const addEntryRedux = (payload) => ({ type: 'ADD_ENTRY', payload });
-  const removeEntryRedux = (id) => ({ type: 'REMOVE_ENTRY', payload: { id } });
-
-  store.dispatch(addEntryRedux(payload_add));
-  store.dispatch(removeEntryRedux(1));
-
+  }, [isOpen]);
 
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
 
@@ -143,4 +111,4 @@ var initialState = [
     value: 50.00,
     isExpense: true,
   },
-]
+];
