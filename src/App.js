@@ -40,7 +40,7 @@ function App() {
   const store = createStore((state = initialState, action) => {
     switch (action.type) {
       case 'ADD_ENTRY':
-        return state.concat(action.payload );
+        return state.concat(action.payload);
       case 'REMOVE_ENTRY':
         return state.filter(entry => entry.id !== action.payload.id);
       default:
@@ -55,10 +55,11 @@ function App() {
     isExpense: false
   };
 
-  const payload_remove = { id: 1 }
+  const addEntryRedux = (payload) => ({ type: 'ADD_ENTRY', payload });
+  const removeEntryRedux = (id) => ({ type: 'REMOVE_ENTRY', payload: { id } });
 
-  store.dispatch({ type: 'ADD_ENTRY', payload: payload_add });
-  store.dispatch({ type: 'REMOVE_ENTRY', payload: payload_remove });
+  store.dispatch(addEntryRedux(payload_add));
+  store.dispatch(removeEntryRedux(1));
 
 
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
