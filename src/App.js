@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createStore } from 'redux';
 import { Container } from 'semantic-ui-react';
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
@@ -35,6 +36,8 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
+
+  const store = createStore((state = initialState)=> state);
   
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
   
