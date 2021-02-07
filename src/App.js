@@ -21,7 +21,7 @@ function App() {
   const [expenseTotal, setExpenseTotal] = useState(0);
 
   useEffect(() => {
-    setIncomeTotal( entries.reduce((previous, current) => current.isExpense ? previous : previous + Number(current.value), 0));
+    setIncomeTotal(entries.reduce((previous, current) => current.isExpense ? previous : previous + Number(current.value), 0));
     setExpenseTotal(entries.reduce((previous, current) => current.isExpense ? previous + Number(current.value) : previous, 0));
     setTotal(entries.reduce((previous, current) => current.isExpense ? previous - current.value : previous + Number(current.value), 0));
   }, [entries])
@@ -37,10 +37,24 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
 
-  const store = createStore((state = initialState)=> state);
-  
+  const store = createStore((state = initialState, action) => {
+    switch (action.type) {
+      case 'ADD_ENTRY':
+        const newEntries = entries.concat({
+          id: 5,
+          description: 'Hello from Redux',
+          value: 100,
+          isExpense: false
+        });
+        return newEntries;
+      default:
+        return state;
+    }
+  });
+  store.dispatch({ type: 'ADD_ENTRY' });
+
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
-  
+
   const addEntry = () => {
     const newEntries = entries.concat({ description, value, id: entries.length + 1, isExpense });
     setEntries(newEntries);
