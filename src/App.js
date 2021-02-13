@@ -33,10 +33,11 @@ function App() {
       setEntries(newEntries);
       reSetEntry();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
-
+  
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
-
+  
   const addEntry = () => {
     const newEntries = entries.concat({ description, value, id: entries.length + 1, isExpense });
     setEntries(newEntries);
