@@ -15,12 +15,15 @@ function App() {
   const [isExpense, setIsExpense] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [entryId, setentryId] = useState();
+  const [total, setTotal] = useState(0);
+  const [incomeTotal, setIncomeTotal] = useState(0);
+  const [expenseTotal, setExpenseTotal] = useState(0);
 
   useEffect(() => {
-    const total = entries.reduce((previous, current)=> current.isExpense ? previous - current.value: previous + current.value, 0)
-    const totalIncomes = entries.reduce((previous, current)=> current.isExpense ? previous : previous + current.value, 0)
-    const totalExpense = entries.reduce((previous, current)=> current.isExpense ? previous + current.value : previous, 0)
-  }, entries)
+    setIncomeTotal( entries.reduce((previous, current) => current.isExpense ? previous : previous + Number(current.value), 0));
+    setExpenseTotal(entries.reduce((previous, current) => current.isExpense ? previous + Number(current.value) : previous, 0));
+    setTotal(entries.reduce((previous, current) => current.isExpense ? previous - current.value : previous + Number(current.value), 0));
+  }, [entries])
 
   useEffect(() => {
     if (!isOpen && entryId) {
@@ -52,7 +55,7 @@ function App() {
     }
   }
 
-  const reSetEntry =() => {
+  const reSetEntry = () => {
     setDescription('');
     setValue('');
     setIsExpense(true);
@@ -62,9 +65,9 @@ function App() {
     <Container>
       <MainHeader title='Budget' />
 
-      <DisplayBalance size='small' title='Your Balance: ' value='2,550.53' />
+      <DisplayBalance size='small' title='Your Balance: ' value={total} />
 
-      <DisplayBalances />
+      <DisplayBalances incomeTotal={incomeTotal} expenseTotal={expenseTotal} />
 
       <MainHeader title='History' type='h3' />
 
@@ -86,25 +89,25 @@ var initialState = [
   {
     id: 1,
     description: 'Work incomme',
-    value: '$1000,00',
+    value: 1000.00,
     isExpense: false,
   },
   {
     id: 2,
     description: 'Water bill',
-    value: '$20,00',
+    value: 20.00,
     isExpense: true,
   },
   {
     id: 3,
     description: 'Rent',
-    value: '$300,00',
+    value: 300.00,
     isExpense: true,
   },
   {
     id: 4,
     description: 'Power bill',
-    value: '$50,00',
+    value: 50.00,
     isExpense: true,
   },
 ]
