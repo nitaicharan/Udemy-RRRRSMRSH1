@@ -22,12 +22,17 @@ function App() {
       const newEntries = [...entries];
       newEntries[index] = { description, value, isExpense, id: entryId };
       setEntries(newEntries);
+      reSetEntry();
     }
   }, [isOpen])
 
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
 
-  const addEntry = (description, value, isExpense) => setEntries(entries.concat({ description, value, id: entries.length + 1, isExpense }));
+  const addEntry = () => {
+    const newEntries = entries.concat({ description, value, id: entries.length + 1, isExpense });
+    setEntries(newEntries);
+    reSetEntry();
+  }
 
   const editEntry = (id) => {
     if (id) {
@@ -41,6 +46,11 @@ function App() {
     }
   }
 
+  const reSetEntry =() => {
+    setDescription('');
+    setValue('');
+    setIsExpense(true);
+  }
 
   return (
     <Container>
