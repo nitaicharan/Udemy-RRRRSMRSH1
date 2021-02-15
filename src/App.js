@@ -17,6 +17,12 @@ function App() {
   const [entryId, setentryId] = useState();
 
   useEffect(() => {
+    const total = entries.reduce((previous, current)=> current.isExpense ? previous - current.value: previous + current.value, 0)
+    const totalIncomes = entries.reduce((previous, current)=> current.isExpense ? previous : previous + current.value, 0)
+    const totalExpense = entries.reduce((previous, current)=> current.isExpense ? previous + current.value : previous, 0)
+  }, entries)
+
+  useEffect(() => {
     if (!isOpen && entryId) {
       const index = entries.findIndex(entry => entry.id === entryId);
       const newEntries = [...entries];
