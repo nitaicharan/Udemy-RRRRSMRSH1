@@ -9,6 +9,9 @@ import NewEntryForm from './components/NewEntryForm';
 
 function App() {
   const [entries, setEntries] = useState(initialState);
+  const [value, setValue] = useState('');
+  const [description, setDescription] = useState('');
+  const [isExpense, setIsExpense] = useState(false)
 
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
 
@@ -29,7 +32,7 @@ function App() {
 
       <MainHeader title='Add new transaction' type='h3' />
 
-      <NewEntryForm addEntry={addEntry} />
+      <NewEntryForm addEntry={addEntry} description={description} isExpense={isExpense} value={value} setValue={setValue} setDescription={setDescription} setIsExpense={setIsExpense} />
 
     </Container>
   );
