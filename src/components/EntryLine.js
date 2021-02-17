@@ -19,7 +19,7 @@ function EntryLine({ id, description, value, isExpense = false, deleteEntry }) {
                     </Grid.Row>
                 </Grid>
             </Segment>
-            <ModelEdit isOpen={isOpen} />
+            <ModelEdit isOpen={isOpen} setIsOpen={setIsOpen} />
         </Fragment>
     )
 }

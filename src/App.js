@@ -12,7 +12,7 @@ function App() {
 
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
 
-  const addEntry = (description, value) => setEntries(entries.concat({ description, value, id: entries.length + 1 }));
+  const addEntry = (description, value, isExpense) => setEntries(entries.concat({ description, value, id: entries.length + 1, isExpense }));
 
 
   return (

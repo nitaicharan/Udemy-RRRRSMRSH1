@@ -10,7 +10,7 @@ function ModelEdit({ isOpen, setIsOpen }) {
                 <NewEntryForm />
             </Modal.Content>
             <Modal.Actions>
-                <Button onClick={()=> setIsOpen(false)}></Button>
+                <Button onClick={()=> setIsOpen(false)}>Close</Button>
             </Modal.Actions>
         </Modal>
     )
