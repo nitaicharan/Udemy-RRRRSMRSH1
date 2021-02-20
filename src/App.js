@@ -8,8 +8,11 @@ import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 
 function App() {
-  const [entries, setentries] = useState(initialState)
-  
+  const [entries, setEntries] = useState(initialState);
+
+  const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
+
+
   return (
     <Container>
       <MainHeader title='Budget' />
@@ -20,7 +23,7 @@ function App() {
 
       <MainHeader title='History' type='h3' />
 
-      <EntryLines entries={entries} />
+      <EntryLines entries={entries} deleteEntry={deleteEntry} />
 
       <MainHeader title='Add new transaction' type='h3' />
 
@@ -34,21 +37,25 @@ export default App;
 
 var initialState = [
   {
+    id: 1,
     description: 'Work incomme',
     value: '$1000,00',
     isExpense: false,
   },
   {
+    id: 2,
     description: 'Water bill',
     value: '$20,00',
     isExpense: true,
   },
   {
+    id: 3,
     description: 'Rent',
     value: '$300,00',
     isExpense: true,
   },
   {
+    id: 4,
     description: 'Power bill',
     value: '$50,00',
     isExpense: true,
