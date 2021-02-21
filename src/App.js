@@ -19,8 +19,7 @@ function App() {
 
       <MainHeader title='History' type='h3' />
 
-      <EntryLine description={entries[0].description} value={entries[0].value} isExpense={entries[0].isExpense} />
-      <EntryLine description='expense' value='$10.00' />
+      {entries.map(entry => <EntryLine description={entry.description} value={entry.value} isExpense={entry.isExpense} />)}
 
       <MainHeader title='Add new transaction' type='h3' />
 
