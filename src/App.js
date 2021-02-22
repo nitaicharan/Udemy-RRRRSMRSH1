@@ -1,5 +1,6 @@
 import { Container, Grid, Icon, Segment, Statistic } from 'semantic-ui-react';
 import './App.css';
+import DisplayBalance from './components/DisplayBalance';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 
@@ -8,32 +9,23 @@ function App() {
     <Container>
       <MainHeader title='Budget' />
 
-      <Statistic size='small'>
-        <Statistic.Label>Your Balance:</Statistic.Label>
-        <Statistic.Value>2,550.53</Statistic.Value>
-      </Statistic>
+      <DisplayBalance size='small' title='Your Balance: ' value='2,550.53' />
 
       <Segment textAlign="center">
         <Grid columns={2} divided>
           <Grid.Row>
             <Grid.Column>
-              <Statistic size='tiny' color="green">
-                <Statistic.Label style={{ textAlign: 'left' }}>Income:</Statistic.Label>
-                <Statistic.Value>2,550.53</Statistic.Value>
-              </Statistic>
+              <DisplayBalance color='green' title='Income: ' value='1254,54' />
             </Grid.Column>
 
             <Grid.Column>
-              <Statistic size='tiny' color="red">
-                <Statistic.Label style={{ textAlign: 'left' }}>Expenses:</Statistic.Label>
-                <Statistic.Value>623.50</Statistic.Value>
-              </Statistic>
+              <DisplayBalance color='red' title='Expences: ' value='623,50' />
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Segment>
 
-      <MainHeader title='History' type='h3'/>
+      <MainHeader title='History' type='h3' />
 
       <Segment color='red'>
         <Grid columns={3} textAlign="right">
@@ -74,10 +66,10 @@ function App() {
         </Grid>
       </Segment>
 
-      <MainHeader title='Add new transaction' type='h3'/>
+      <MainHeader title='Add new transaction' type='h3' />
 
-      <NewEntryForm/>
-      
+      <NewEntryForm />
+
     </Container>
   );
 }
