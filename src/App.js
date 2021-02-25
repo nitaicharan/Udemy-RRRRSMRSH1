@@ -1,9 +1,15 @@
-import logo from './logo.svg';
+import { Container, Header, Statistic } from 'semantic-ui-react'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">Hello fom Budget</div>
+    <Container>
+      <Header as='h1'></Header>
+      <Statistic size='small'>
+        <Statistic.Label>Your Balance:</Statistic.Label>
+        <Statistic.Value>2,550.53</Statistic.Value>
+      </Statistic>
+    </Container>
   );
 }
 
