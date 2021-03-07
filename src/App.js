@@ -40,18 +40,21 @@ function App() {
   const store = createStore((state = initialState, action) => {
     switch (action.type) {
       case 'ADD_ENTRY':
-        const newEntries = entries.concat({
-          id: 5,
-          description: 'Hello from Redux',
-          value: 100,
-          isExpense: false
-        });
-        return newEntries;
+        return entries.concat({...action.payLoad});
       default:
         return state;
     }
   });
-  store.dispatch({ type: 'ADD_ENTRY' });
+
+  const payLoad = {
+    id: 5,
+    description: 'Hello from Redux',
+    value: 999,
+    isExpense: false
+  };
+
+  store.dispatch({ type: 'ADD_ENTRY', payLoad});
+
 
   const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
 
