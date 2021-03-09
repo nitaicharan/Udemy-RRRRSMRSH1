@@ -12,13 +12,13 @@ export default (state = initialState, action) => {
 var initialState = [
     {
         id: 1,
-        description: 'Work incomme',
+        description: 'Work incomme redux',
         value: 1000.00,
         isExpense: false,
     },
     {
         id: 2,
-        description: 'Water bill',
+        description: 'Water bill redux',
         value: 20.00,
         isExpense: true,
     },

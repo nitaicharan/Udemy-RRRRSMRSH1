@@ -1,10 +1,12 @@
 import { combineReducers, createStore } from "redux";
 import entriesReducer from "../reducers/entries.reducer";
 
-export default () => {
+const configureStore = () => {
     return createStore(
         combineReducers({
             entries: entriesReducer,
         })
     );
 };
+
+export default configureStore;

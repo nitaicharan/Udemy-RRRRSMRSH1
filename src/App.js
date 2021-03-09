@@ -7,6 +7,7 @@ import EntryLines from './components/EntryLines';
 import MainHeader from './components/MainHeader';
 import ModelEdit from './components/ModelEdit';
 import NewEntryForm from './components/NewEntryForm';
+import { useSelector } from 'react-redux';
 
 function App() {
   const [entries, setEntries] = useState(initialState);
@@ -18,6 +19,7 @@ function App() {
   const [total, setTotal] = useState(0);
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
+  const entriesRedux = useSelector(state => state.entries)
 
   useEffect(() => {
     setIncomeTotal(entries.reduce((previous, current) => current.isExpense ? previous : previous + Number(current.value), 0));
@@ -72,7 +74,7 @@ function App() {
 
       <MainHeader title='History' type='h3' />
 
-      <EntryLines entries={entries} deleteEntry={deleteEntry} editEntry={editEntry} />
+      <EntryLines entries={entriesRedux} deleteEntry={deleteEntry} editEntry={editEntry} />
 
       <MainHeader title='Add new transaction' type='h3' />
 
