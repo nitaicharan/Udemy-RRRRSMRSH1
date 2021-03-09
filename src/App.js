@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Container } from 'semantic-ui-react';
 import './App.css';
 import DisplayBalance from './components/DisplayBalance';
@@ -7,10 +8,8 @@ import EntryLines from './components/EntryLines';
 import MainHeader from './components/MainHeader';
 import ModelEdit from './components/ModelEdit';
 import NewEntryForm from './components/NewEntryForm';
-import { useSelector } from 'react-redux';
 
 function App() {
-  const [entries, setEntries] = useState(initialState);
   const [value, setValue] = useState('');
   const [description, setDescription] = useState('');
   const [isExpense, setIsExpense] = useState(false);
@@ -19,7 +18,7 @@ function App() {
   const [total, setTotal] = useState(0);
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
-  const entriesRedux = useSelector(state => state.entries)
+  const entries = useSelector(state => state.entries)
 
   useEffect(() => {
     setIncomeTotal(entries.reduce((previous, current) => current.isExpense ? previous : previous + Number(current.value), 0));
@@ -32,17 +31,16 @@ function App() {
       const index = entries.findIndex(entry => entry.id === entryId);
       const newEntries = [...entries];
       newEntries[index] = { description, value, isExpense, id: entryId };
-      setEntries(newEntries);
+      // setEntries(newEntries);
       reSetEntry();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  const deleteEntry = (id) => setEntries(entries.filter(entry => entry.id !== id));
 
   const addEntry = () => {
     const newEntries = entries.concat({ description, value, id: entries.length + 1, isExpense });
-    setEntries(newEntries);
+    // setEntries(newEntries);
     reSetEntry();
   }
 
@@ -74,7 +72,7 @@ function App() {
 
       <MainHeader title='History' type='h3' />
 
-      <EntryLines entries={entriesRedux} deleteEntry={deleteEntry} editEntry={editEntry} />
+      <EntryLines entries={entries} editEntry={editEntry} />
 
       <MainHeader title='Add new transaction' type='h3' />
 
@@ -87,30 +85,3 @@ function App() {
 }
 
 export default App;
-
-var initialState = [
-  {
-    id: 1,
-    description: 'Work incomme',
-    value: 1000.00,
-    isExpense: false,
-  },
-  {
-    id: 2,
-    description: 'Water bill',
-    value: 20.00,
-    isExpense: true,
-  },
-  {
-    id: 3,
-    description: 'Rent',
-    value: 300.00,
-    isExpense: true,
-  },
-  {
-    id: 4,
-    description: 'Power bill',
-    value: 50.00,
-    isExpense: true,
-  },
-];

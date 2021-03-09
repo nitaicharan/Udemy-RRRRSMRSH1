@@ -1,4 +1,4 @@
-export default (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_ENTRY':
             return state.concat(action.payload);
@@ -9,16 +9,18 @@ export default (state = initialState, action) => {
     }
 };
 
+export default reducer;
+
 var initialState = [
     {
         id: 1,
-        description: 'Work incomme redux',
+        description: 'Work incomme',
         value: 1000.00,
         isExpense: false,
     },
     {
         id: 2,
-        description: 'Water bill redux',
+        description: 'Water bill',
         value: 20.00,
         isExpense: true,
     },
