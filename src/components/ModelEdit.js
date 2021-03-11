@@ -2,10 +2,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Button, Modal } from 'semantic-ui-react';
 import { closeEditModal } from '../actions/modals.action';
-import userEntryDetails from "./../hooks/userEntryDetails";
+import userEntryDetails from "./../hooks/UseEntryDetails";
 import EntryForm from './EntryForm';
 
-function ModelEdit({ isOpen, description, value, isExpense }) {
+function ModelEdit({ isOpen, description, value, isExpense, id }) {
     const dispatch = useDispatch();
     const entryUpdate = userEntryDetails(description, value, isExpense);
 
@@ -17,7 +17,7 @@ function ModelEdit({ isOpen, description, value, isExpense }) {
             </Modal.Content>
             <Modal.Actions>
                 <Button onClick={() => dispatch(closeEditModal())}>Close</Button>
-                <Button onClick={() => dispatch(closeEditModal())} primary>Ok</Button>
+                <Button onClick={() => entryUpdate.updateEntry(id)} primary>Ok</Button>
             </Modal.Actions>
         </Modal>
     );
