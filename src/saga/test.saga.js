@@ -61,7 +61,6 @@ function* infinitySaga() {
             console.log('The log was canceled? ', yield cancelled());
         }
     }
-    console.log('End infinity saga');
 }
 
 export function* testSagaCancelled(params) {
