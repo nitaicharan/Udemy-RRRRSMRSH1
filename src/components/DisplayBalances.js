@@ -12,7 +12,7 @@ function DisplayBalances({ incomeTotal, expenseTotal }) {
                     </Grid.Column>
 
                     <Grid.Column>
-                        <DisplayBalance color='red' title='Expences: ' value={expenseTotal} />
+                        <DisplayBalance color='red' title='Expenses: ' value={expenseTotal} />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
