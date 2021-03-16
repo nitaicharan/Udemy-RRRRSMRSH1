@@ -21,7 +21,7 @@ This project was part of the Udemy course "React, React Redux and Redux Saga - M
 - [Certificate][certificate-url]
 
 ### Certificate
-This certificate above verifies that [Nitai Charan][udemy-url] successfully completed the course [React, React Redux and Redux Saga - Master React State/Hooks][course-url] on ??/??/???? as taught by [Icaro Lavrador][instructor-url] on Udemy. The certificate indicates the entire course was completed as validated by the student.
+This certificate above verifies that [Nitai Charan][udemy-url] successfully completed the course [React, React Redux and Redux Saga - Master React State/Hooks][course-url] on 03/15/2021 as taught by [Icaro Lavrador][instructor-url] on Udemy. The certificate indicates the entire course was completed as validated by the student.
 
 <p align="center">
   <img src="CERTIFICATE.jpg">
@@ -33,19 +33,27 @@ This certificate above verifies that [Nitai Charan][udemy-url] successfully comp
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Github][github-shield]][github-url]
 [![Udemy][udemy-shield]][udemy-url]
-[![Instagram][instagram-shield]][instagram-url]
-[![Twitter][twitter-shield]][twitter-url]
 
 ## Development GitHub Pages
+<!-- https://www.pluralsight.com/guides/how-to-create-react-application-and-deploy-on-github-pages -->
+
+```json
+...
+// Add this property in file package.json:
+{
+  "homepage": "http://<username>.github.io/<repo-name>"
+}
+...
+```
 
 ```
-ng build --prod --base-href=/Udemy-RRRRSMRSH1/
+npm run build
 
 git add -A
-git commit -m <titule> <message>
+git commit -m <tittle> <message>
 git push origin <branch>
-git subtree push --prefix dist/course origin gh-pages
-git push origin `git subtree split --prefix dist/course master`:gh-pages --force
+git subtree push --prefix build origin gh-pages
+git push origin `git subtree split --prefix build <branch>`:gh-pages --force
 ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -57,7 +65,7 @@ git push origin `git subtree split --prefix dist/course master`:gh-pages --force
 <!-- ALIES README -->
 [course-url]: https://udemy.com/course/react-redux-saga/
 [instructor-url]: https://udemy.com/user/icaro-lavrador/
-[certificate-url]: #
+[certificate-url]: http://ude.my/UC-1efc6ff3-bc96-4882-84a7-7a2f307b6a39/
 
 <!-- CONTACT SHIELDS -->
 
