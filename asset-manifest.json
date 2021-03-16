@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Udemy-RRRRSMRSH1/static/css/main.a0f92c83.chunk.css",
+    "main.js": "/Udemy-RRRRSMRSH1/static/js/main.44255d1d.chunk.js",
+    "main.js.map": "/Udemy-RRRRSMRSH1/static/js/main.44255d1d.chunk.js.map",
+    "runtime-main.js": "/Udemy-RRRRSMRSH1/static/js/runtime-main.4c9b5034.js",
+    "runtime-main.js.map": "/Udemy-RRRRSMRSH1/static/js/runtime-main.4c9b5034.js.map",
+    "static/css/2.89ad06bd.chunk.css": "/Udemy-RRRRSMRSH1/static/css/2.89ad06bd.chunk.css",
+    "static/js/2.e7aae71d.chunk.js": "/Udemy-RRRRSMRSH1/static/js/2.e7aae71d.chunk.js",
+    "static/js/2.e7aae71d.chunk.js.map": "/Udemy-RRRRSMRSH1/static/js/2.e7aae71d.chunk.js.map",
+    "index.html": "/Udemy-RRRRSMRSH1/index.html",
+    "static/css/2.89ad06bd.chunk.css.map": "/Udemy-RRRRSMRSH1/static/css/2.89ad06bd.chunk.css.map",
+    "static/css/main.a0f92c83.chunk.css.map": "/Udemy-RRRRSMRSH1/static/css/main.a0f92c83.chunk.css.map",
+    "static/js/2.e7aae71d.chunk.js.LICENSE.txt": "/Udemy-RRRRSMRSH1/static/js/2.e7aae71d.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/Udemy-RRRRSMRSH1/static/media/outline-icons.ddae9b1b.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4c9b5034.js",
+    "static/css/2.89ad06bd.chunk.css",
+    "static/js/2.e7aae71d.chunk.js",
+    "static/css/main.a0f92c83.chunk.css",
+    "static/js/main.44255d1d.chunk.js"
+  ]
+}
